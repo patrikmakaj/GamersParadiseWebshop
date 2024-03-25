@@ -11,11 +11,13 @@ public class UnitOfWork : IUnitOfWork
 {
     private ApplicationDbContext _context;
     public IGenreRepository Genre { get; private set; }
+    public IGameRepository Game { get; private set; }
     
     public UnitOfWork(ApplicationDbContext context)
     {
         _context = context;
         Genre = new GenreRepository(_context);
+        Game = new GameRepository(_context);
     }
     public void Save()
     {

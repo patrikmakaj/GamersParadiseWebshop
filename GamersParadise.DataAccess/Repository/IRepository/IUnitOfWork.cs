@@ -8,4 +8,5 @@ namespace GamersParadise.DataAccess.Repository.IRepository;
 public interface IUnitOfWork
 {
     IGenreRepository Genre { get; }
+    IGameRepository Game { get; }
 }

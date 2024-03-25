@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Genres";
+}
+@model List<Genre>
+
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h4 class="text-primary">  Genre list
+            </h4>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="" asp-action="" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Genre
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>
+            Genre Name
+        </th>
+        <th>
+            Display Order
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var genre in Model)
+    {
+        <tr>
+            <td>
+                @genre.Name
+            </td>
+            <td>
+                @genre.DisplayOrder
+            </td>
+            <td>
+                <div class="w-75 btn-group" role="group">
+                    <a asp-controller="Genre" asp-action="" asp-route-categoryId="@genre.Id" class="btn btn-primary mx-2">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                    <a asp-controller="Genre" asp-action="" asp-route-categoryId="@genre.Id" class="btn btn-primary mx-2">
+                        <i class="bi bi-trash3"></i> Delete
+                    </a>
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

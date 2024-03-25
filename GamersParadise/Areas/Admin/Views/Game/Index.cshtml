@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Games";
+}
+@model List<Game>
+
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h4 class="text-primary">  Games list
+            </h4>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="" asp-action="" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Game
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var game in Model)
+    {
+        <tr>
+            <td>
+                @game.Title
+            </td>
+            <td>
+                @game.Description
+            </td>
+            <td>
+                <div class="w-75 btn-group" role="group">
+                    <a asp-controller="Game" asp-action="" asp-route-categoryId="@game.Id" class="btn btn-primary mx-2">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                    <a asp-controller="Game" asp-action="" asp-route-categoryId="@game.Id" class="btn btn-primary mx-2">
+                        <i class="bi bi-trash3"></i> Delete
+                    </a>
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
