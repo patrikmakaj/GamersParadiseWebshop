@@ -1,0 +1,41 @@
+@model Genre
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-2">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">
+                    @(Model.Id != 0 ? "Edit" : "Create") Product
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4 text-white">
+        <form method="post">
+            @* Hidden field for Id (if editing) *@
+            <input asp-for="Id" hidden/>
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Name" class="form-control border-0x shadow"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Name" class="ms-2 text-dark">Genre Name</label>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <input asp-for="DisplayOrder" class="form-control border-0x shadow"/>
+                <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                <label asp-for="DisplayOrder" class="ms-2 text-dark">Display Order</label>
+            </div>
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">
+                        @(Model.Id != 0 ? "Edit" : "Create") Product
+                    </button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Genre" asp-action="Index" class="btn btn-outline-primary border form-control">
+                        Back
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
