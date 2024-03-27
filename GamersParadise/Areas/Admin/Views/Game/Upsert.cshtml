@@ -1,0 +1,87 @@
+@model GameViewModel
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-2">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">
+                    @(Model.Game.Id != 0 ? "Edit" : "Create") Game
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4 text-white">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <div class="col-10">
+                <div class="border p-3">
+                    <input asp-for="Game.Id" hidden/>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="Game.Title" class="form-control border-0x shadow"/>
+                        <span asp-validation-for="Game.Title" class="text-danger"></span>
+                        <label asp-for="Game.Title" class="ms-2 text-dark">
+                        </label>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="Game.Description" class="form-control border-0 shadow"/>
+                        <span asp-validation-for="Game.Description" class="text-danger"></span>
+                        <label asp-for="Game.Description" class="ms-2 text-dark">
+                        </label>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="Game.Platform" class="form-control border-0 shadow"/>
+                        <span asp-validation-for="Game.Platform" class="text-danger"></span>
+                        <label asp-for="Game.Platform" class="ms-2 text-dark">
+                        </label>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="Game.Publisher" class="form-control border-0 shadow"/>
+                        <span asp-validation-for="Game.Publisher" class="text-danger"></span>
+                        <label asp-for="Game.Publisher" class="ms-2 text-dark">
+                        </label>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input type="number" asp-for="Game.Price" step="0.01" class="form-control border-0 shadow"/>
+                        <span asp-validation-for="Game.Price" class="text-danger"></span>
+                        <label asp-for="Game.Price" class="ms-2 text-dark">
+                        </label>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="Game.AgeRating" class="form-control border-0 shadow"/>
+                        <span asp-validation-for="Game.AgeRating" class="text-danger"></span>
+                        <label asp-for="Game.AgeRating" class="ms-2 text-dark">
+                        </label>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <select asp-for="@Model.Game.GenreId" asp-items="@Model.GenreList" class="form-select border-0 shadow">
+                            <option disabled select>--Select Genre--</option>
+                        </select>
+                        <label asp-for="Game.GenreId" class="ms-2 text-dark"></label>
+                        <span asp-validation-for="Game.GenreId" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input type="file" name="file" asp-for="Game.ImageUrl" class="form-control border-0 shadow"/>
+                        <label asp-for="Game.ImageUrl" class="ms-2 text-dark">
+                        </label>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-6 col-md-3">
+                            <button type="submit" class="btn btn-primary form-control">
+                                @(Model.Game.Id != 0 ? "Edit" : "Create")
+                            </button>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a asp-controller="Game" asp-action="Index" class="btn btn-outline-primary border form-control">
+                                Back to list
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

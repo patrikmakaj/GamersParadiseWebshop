@@ -33,17 +33,25 @@ public class GenreController : Controller
     }
     
     [HttpPost]
-    public IActionResult Upsert(Genre genre)
+[HttpPost]
+public IActionResult Upsert(Genre genre)
+{
+    if (ModelState.IsValid)
     {
-        if (ModelState.IsValid)
+        if (genre.Id == 0)
+        {
+            _unitOfWork.Genre.Add(genre);
+        }
+        else
         {
             _unitOfWork.Genre.Update(genre);
-            _unitOfWork.Save();
-            TempData["success"] = "Genre saved successfully";
-            return RedirectToAction("Index", "Genre");
         }
-        return View(genre);
+        _unitOfWork.Save();
+        TempData["success"] = "Genre saved successfully";
+        return RedirectToAction("Index", "Genre");
     }
+    return View(genre);
+}
 
     
     public IActionResult Delete(int? genreId)

@@ -22,7 +22,7 @@ public class Game
     [ForeignKey("GenreId")]
     [ValidateNever]
     public Genre Genre { get; set; }
-    
+    [ValidateNever]
     public string ImageUrl { get; set; }
 
     [DisplayName("Platform")]

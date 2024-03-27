@@ -3,54 +3,44 @@
 }
 @model List<Game>
 
-
-<div class="container">
-    <div class="row pt-4">
-        <div class="col-6">
-            <h4 class="text-primary">  Games list
-            </h4>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-primary">Games list</h2>
         </div>
-        <div class="col-6 text-end">
-            <a asp-controller="" asp-action="" class="btn btn-primary">
+        <div class="col-12 text-end">
+            <a asp-controller="Game" asp-action="Upsert" class="btn btn-secondary">
                 <i class="bi bi-plus-circle"></i> Create New Game
             </a>
         </div>
+    </div>
 
+    <div class="row mt-4">
+        @foreach (var game in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="@Url.Content("~/" + @game.ImageUrl)" alt="@game.Title" class="card-img-top" width="100" height="100"/>
+                    <div class="card-body">
+                        <h5 class="card-title">@game.Title</h5>
+                        <p class="card-text">@game.Description</p>
+                        <p class="card-text">Platform: @game.Platform</p>
+                        <p class="card-text">Publisher: @game.Publisher</p>
+                        <p class="card-text">Age Rating: @game.AgeRating</p>
+                        <p class="card-text">Price: @game.Price</p>
+                        <div class="btn-group-container">
+                            <div class="btn-group" role="group">
+                                <a asp-controller="Game" asp-action="Upsert" asp-route-gameId="@game.Id" class="btn btn-outline-secondary">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-controller="Game" asp-action="Delete" asp-route-gameId="@game.Id" class="btn btn-outline-danger">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
-
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th>
-            Title
-        </th>
-        <th>
-            Description
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var game in Model)
-    {
-        <tr>
-            <td>
-                @game.Title
-            </td>
-            <td>
-                @game.Description
-            </td>
-            <td>
-                <div class="w-75 btn-group" role="group">
-                    <a asp-controller="Game" asp-action="" asp-route-categoryId="@game.Id" class="btn btn-primary mx-2">
-                        <i class="bi bi-pencil-square"></i> Edit
-                    </a>
-                    <a asp-controller="Game" asp-action="" asp-route-categoryId="@game.Id" class="btn btn-primary mx-2">
-                        <i class="bi bi-trash3"></i> Delete
-                    </a>
-                </div>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
