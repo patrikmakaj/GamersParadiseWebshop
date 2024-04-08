@@ -9,5 +9,6 @@ public interface IUnitOfWork
 {
     IGenreRepository Genre { get; }
     IGameRepository Game { get; }
+    ICompanyRepository Company { get; }
     void Save();
 }

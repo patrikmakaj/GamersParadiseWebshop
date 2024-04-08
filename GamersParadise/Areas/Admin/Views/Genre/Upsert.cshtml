@@ -12,7 +12,6 @@
     </div>
     <div class="card-body p-4 text-white">
         <form method="post">
-            @* Hidden field for Id (if editing) *@
             <input asp-for="Id" hidden/>
             <div class="form-floating py-2 col-12">
                 <input asp-for="Name" class="form-control border-0x shadow"/>
@@ -27,7 +26,7 @@
             <div class="row pt-2">
                 <div class="col-6 col-md-3">
                     <button type="submit" class="btn btn-primary form-control">
-                        @(Model.Id != 0 ? "Edit" : "Create") Product
+                        @(Model.Id != 0 ? "Edit" : "Create") Genre
                     </button>
                 </div>
                 <div class="col-6 col-md-3">

@@ -12,6 +12,7 @@ public class ApplicationDbContext : DbContext
     }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Game> Games { get; set; }
+    public DbSet<Company> Companies { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -23,6 +24,18 @@ public class ApplicationDbContext : DbContext
             new Genre { Id = 5, DisplayOrder = 2, Name = "Horror" },
             new Genre { Id = 6, DisplayOrder = 4, Name = "Sports" }
         );
+
+        modelBuilder.Entity<Company>().HasData(
+   new
+   {
+       Id = 1,
+       Name = "ImeKompanije",
+       StreetAddress = "UlicaKompanije",
+       City = "Osijek",
+       State = "Osjecko-baranjska",
+       PostalCode = 31000,
+       PhoneNumber = "09912312312"
+   });
 
         modelBuilder.Entity<Game>().HasData(
             new Game

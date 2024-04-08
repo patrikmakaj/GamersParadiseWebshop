@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<table class="table table-bordered table-striped">
+<table id="tblDataGenre" class="table table-bordered table-striped">
     <thead>
     <tr>
         <th>
@@ -28,29 +28,18 @@
         <th>
             Display Order
         </th>
+        <th>
+
+        </th>
     </tr>
     </thead>
-    <tbody>
-    @foreach (var genre in Model)
-    {
-        <tr>
-            <td>
-                @genre.Name
-            </td>
-            <td>
-                @genre.DisplayOrder
-            </td>
-            <td>
-                <div class="w-75 btn-group" role="group">
-                    <a asp-controller="Genre" asp-action="Upsert" asp-route-gameId="@genre.Id" class="btn btn-outline-secondary">
-                        <i class="bi bi-pencil-square"></i> Edit
-                    </a>
-                    <a asp-controller="Genre" asp-action="Delete" asp-route-gameId="@genre.Id" class="btn btn-outline-danger">
-                        <i class="bi bi-trash"></i> Delete
-                    </a>
-                </div>
-            </td>
-        </tr>
-    }
-    </tbody>
+    @* <tbody>
+
+    </tbody> *@
 </table>
+
+@section Scripts {
+    @{
+        <script src="~/js/genre.js"></script>
+    }
+}

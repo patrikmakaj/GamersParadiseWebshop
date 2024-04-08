@@ -7,6 +7,21 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Areas\Admin\Views\NewFolder1\**" />
+      <Compile Remove="Areas\Admin\Views\NewFolder\**" />
+      <Compile Remove="Controllers\**" />
+      <Content Remove="Areas\Admin\Views\NewFolder1\**" />
+      <Content Remove="Areas\Admin\Views\NewFolder\**" />
+      <Content Remove="Controllers\**" />
+      <EmbeddedResource Remove="Areas\Admin\Views\NewFolder1\**" />
+      <EmbeddedResource Remove="Areas\Admin\Views\NewFolder\**" />
+      <EmbeddedResource Remove="Controllers\**" />
+      <None Remove="Areas\Admin\Views\NewFolder1\**" />
+      <None Remove="Areas\Admin\Views\NewFolder\**" />
+      <None Remove="Controllers\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\GamersParadise.DataAccess\GamersParadise.DataAccess.csproj" />
       <ProjectReference Include="..\GamersParadise.Models\GamersParadise.Models.csproj" />
       <ProjectReference Include="..\GamersParadise.Utility\GamersParadise.Utility.csproj" />
@@ -22,13 +37,17 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
       <Folder Include="wwwroot\images\" />
     </ItemGroup>
 
     <ItemGroup>
       <AdditionalFiles Include="Areas\Admin\Views\Game\Index.cshtml" />
       <AdditionalFiles Include="Areas\Customer\Views\Home\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Areas\Admin\Views\Company\Index.cshtml" />
+      <None Include="Areas\Admin\Views\Company\Upsert.cshtml" />
     </ItemGroup>
 
 </Project>

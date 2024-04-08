@@ -3,10 +3,12 @@
 }
 @model List<Game>
 
-<div class="container mt-4">
-    <div class="row">
+<div class="container">
+    <div class="row pt-4">
         <div class="col-8">
-            <h2 class="text-primary">Games list</h2>
+            <h2 class="text-primary">
+                Games list
+            </h2>
         </div>
         <div class="col-4 text-end">
             <a asp-controller="Game" asp-action="Upsert" class="btn btn-secondary">
@@ -14,6 +16,7 @@
             </a>
         </div>
     </div>
+</div>
 
     <div class="row mt-4">
         @foreach (var game in Model)
@@ -30,10 +33,10 @@
                         <p class="card-text">Price: @game.Price</p>
                         <div class="btn-group-container">
                             <div class="btn-group" role="group">
-                                <a asp-controller="Game" asp-action="Upsert" asp-route-gameId="@game.Id" class="btn btn-outline-secondary">
+                                <a asp-controller="Game" asp-action="Upsert" asp-route-id="@game.Id" class="btn btn-outline-secondary">
                                     <i class="bi bi-pencil-square"></i> Edit
                                 </a>
-                                <a asp-controller="Game" asp-action="Delete" asp-route-gameId="@game.Id" class="btn btn-outline-danger">
+                                <a asp-controller="Game" asp-action="Delete" asp-route-id="@game.Id" class="btn btn-outline-danger">
                                     <i class="bi bi-trash"></i> Delete
                                 </a>
                             </div>
