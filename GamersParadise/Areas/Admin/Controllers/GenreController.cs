@@ -3,7 +3,7 @@ using GamersParadise.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamersParadise.Areas.Admin.Controllers;
-
+[Area("Admin")]
 public class GenreController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

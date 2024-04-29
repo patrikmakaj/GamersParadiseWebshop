@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GamersParadise.Areas.Admin.Controllers;
-
+[Area("Admin")]
 public class GameController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

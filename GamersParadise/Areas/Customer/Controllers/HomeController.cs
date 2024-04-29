@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using GamersParadise.Models;
 
 namespace GamersParadise.Controllers;
-
+[Area("Customer")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

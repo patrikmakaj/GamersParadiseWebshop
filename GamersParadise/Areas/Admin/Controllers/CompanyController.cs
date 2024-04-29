@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GamersParadise.Areas.Admin.Controllers;
 
+[Area("Admin")]
 public class CompanyController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

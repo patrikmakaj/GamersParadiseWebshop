@@ -1,21 +1,26 @@
 using GamersParadise.Models.Models;
-namespace GamersParadise.DataAccess.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-public class ApplicationDbContext : DbContext
+namespace GamersParadise.DataAccess.Data;
+
+using Microsoft.EntityFrameworkCore;
+
+public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
-    
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
-        
     }
+
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Game> Games { get; set; }
     public DbSet<Company> Companies { get; set; }
+    public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Genre>().HasData(
             new Genre { Id = 1, DisplayOrder = 1, Name = "Action" },
             new Genre { Id = 2, DisplayOrder = 2, Name = "Adventure" },
@@ -26,16 +31,16 @@ public class ApplicationDbContext : DbContext
         );
 
         modelBuilder.Entity<Company>().HasData(
-   new
-   {
-       Id = 1,
-       Name = "ImeKompanije",
-       StreetAddress = "UlicaKompanije",
-       City = "Osijek",
-       State = "Osjecko-baranjska",
-       PostalCode = 31000,
-       PhoneNumber = "09912312312"
-   });
+            new
+            {
+                Id = 1,
+                Name = "ImeKompanije",
+                StreetAddress = "UlicaKompanije",
+                City = "Osijek",
+                State = "Osjecko-baranjska",
+                PostalCode = 31000,
+                PhoneNumber = "09912312312"
+            });
 
         modelBuilder.Entity<Game>().HasData(
             new Game
@@ -45,17 +50,20 @@ public class ApplicationDbContext : DbContext
             },
             new Game
             {
-                Id = 2, Description = "Description for EA FC 24", GenreId = 6, AgeRating = "E", ImageUrl = "imageUrlForEaFc24", Price = 60.00,
+                Id = 2, Description = "Description for EA FC 24", GenreId = 6, AgeRating = "E",
+                ImageUrl = "imageUrlForEaFc24", Price = 60.00,
                 Platform = "PC", Publisher = "EA Sports", Title = "EA FC 24"
             },
             new Game
             {
-                Id = 3, Description = "Description for Call of Duty", GenreId = 1, AgeRating = "M", ImageUrl = "imageUrlForCod", Price = 59.99,
+                Id = 3, Description = "Description for Call of Duty", GenreId = 1, AgeRating = "M",
+                ImageUrl = "imageUrlForCod", Price = 59.99,
                 Platform = "PC", Publisher = "Activision", Title = "Call of Duty"
             },
             new Game
             {
-                Id = 4, Description = "Description for Minecraft", GenreId = 2, AgeRating = "E", ImageUrl = "imageUrlForMinecraft", Price = 26.95,
+                Id = 4, Description = "Description for Minecraft", GenreId = 2, AgeRating = "E",
+                ImageUrl = "imageUrlForMinecraft", Price = 26.95,
                 Platform = "PC", Publisher = "Mojang", Title = "Minecraft"
             }
         );
