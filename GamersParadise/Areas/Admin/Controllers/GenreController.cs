@@ -1,9 +1,12 @@
 using GamersParadise.DataAccess.Repository.IRepository;
 using GamersParadise.Models.Models;
+using GamersParadise.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamersParadise.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles = Role.Role_Admin)]
 public class GenreController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

@@ -1,6 +1,8 @@
 ﻿using GamersParadise.DataAccess.Repository.IRepository;
 using GamersParadise.Models.Models;
 using GamersParadise.Models.ViewModels;
+using GamersParadise.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace GamersParadise.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = Role.Role_Admin)]
 public class CompanyController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
